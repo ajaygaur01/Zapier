@@ -31,7 +31,6 @@ while (1) {
   take: 10
  });
 
-
 pendingRows.forEach(r => {
     producer.send({
         topic: TOPIC_NAME,
