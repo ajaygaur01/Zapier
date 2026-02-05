@@ -19,13 +19,13 @@ model User {
   name          String?
   email         String @unique
   password      String
- // zaps          Zap[]
+  zaps          Zap[]
 }
 
 model Zap {
   id                     String   @id @default(uuid())
- // userId      Int         @unique @default(autoincrement())     @map("user_id")
- // user        User        @relation(fields: [userId], references: [id])
+ userId      Int         @unique @default(autoincrement())     @map("user_id")
+ user        User        @relation(fields: [userId], references: [id])
   triggerId   String?    
   trigger    Trigger? 
   actions Action[]
@@ -53,6 +53,7 @@ model Action {
   zap  Zap @relation(fields: [zapId], references: [id])
   actionId String
   type AvailableActions @relation(fields: [actionId], references: [id])
+  sortingOrder Int @default(0)
 
 }
  
