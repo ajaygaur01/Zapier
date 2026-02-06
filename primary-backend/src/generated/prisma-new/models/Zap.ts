@@ -218,16 +218,16 @@ export type ZapOrderByWithRelationInput = {
 
 export type ZapWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId?: number
   AND?: Prisma.ZapWhereInput | Prisma.ZapWhereInput[]
   OR?: Prisma.ZapWhereInput[]
   NOT?: Prisma.ZapWhereInput | Prisma.ZapWhereInput[]
+  userId?: Prisma.IntFilter<"Zap"> | number
   triggerId?: Prisma.StringNullableFilter<"Zap"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   trigger?: Prisma.XOR<Prisma.TriggerNullableScalarRelationFilter, Prisma.TriggerWhereInput> | null
   actions?: Prisma.ActionListRelationFilter
   zapRuns?: Prisma.ZapRunListRelationFilter
-}, "id" | "userId">
+}, "id">
 
 export type ZapOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -252,7 +252,7 @@ export type ZapScalarWhereWithAggregatesInput = {
 export type ZapCreateInput = {
   id?: string
   triggerId?: string | null
-  user?: Prisma.UserCreateNestedOneWithoutZapsInput
+  user: Prisma.UserCreateNestedOneWithoutZapsInput
   trigger?: Prisma.TriggerCreateNestedOneWithoutZapInput
   actions?: Prisma.ActionCreateNestedManyWithoutZapInput
   zapRuns?: Prisma.ZapRunCreateNestedManyWithoutZapInput
@@ -260,7 +260,7 @@ export type ZapCreateInput = {
 
 export type ZapUncheckedCreateInput = {
   id?: string
-  userId?: number
+  userId: number
   triggerId?: string | null
   trigger?: Prisma.TriggerUncheckedCreateNestedOneWithoutZapInput
   actions?: Prisma.ActionUncheckedCreateNestedManyWithoutZapInput
@@ -287,7 +287,7 @@ export type ZapUncheckedUpdateInput = {
 
 export type ZapCreateManyInput = {
   id?: string
-  userId?: number
+  userId: number
   triggerId?: string | null
 }
 
@@ -481,14 +481,14 @@ export type ZapScalarWhereInput = {
 export type ZapCreateWithoutTriggerInput = {
   id?: string
   triggerId?: string | null
-  user?: Prisma.UserCreateNestedOneWithoutZapsInput
+  user: Prisma.UserCreateNestedOneWithoutZapsInput
   actions?: Prisma.ActionCreateNestedManyWithoutZapInput
   zapRuns?: Prisma.ZapRunCreateNestedManyWithoutZapInput
 }
 
 export type ZapUncheckedCreateWithoutTriggerInput = {
   id?: string
-  userId?: number
+  userId: number
   triggerId?: string | null
   actions?: Prisma.ActionUncheckedCreateNestedManyWithoutZapInput
   zapRuns?: Prisma.ZapRunUncheckedCreateNestedManyWithoutZapInput
@@ -529,14 +529,14 @@ export type ZapUncheckedUpdateWithoutTriggerInput = {
 export type ZapCreateWithoutActionsInput = {
   id?: string
   triggerId?: string | null
-  user?: Prisma.UserCreateNestedOneWithoutZapsInput
+  user: Prisma.UserCreateNestedOneWithoutZapsInput
   trigger?: Prisma.TriggerCreateNestedOneWithoutZapInput
   zapRuns?: Prisma.ZapRunCreateNestedManyWithoutZapInput
 }
 
 export type ZapUncheckedCreateWithoutActionsInput = {
   id?: string
-  userId?: number
+  userId: number
   triggerId?: string | null
   trigger?: Prisma.TriggerUncheckedCreateNestedOneWithoutZapInput
   zapRuns?: Prisma.ZapRunUncheckedCreateNestedManyWithoutZapInput
@@ -577,14 +577,14 @@ export type ZapUncheckedUpdateWithoutActionsInput = {
 export type ZapCreateWithoutZapRunsInput = {
   id?: string
   triggerId?: string | null
-  user?: Prisma.UserCreateNestedOneWithoutZapsInput
+  user: Prisma.UserCreateNestedOneWithoutZapsInput
   trigger?: Prisma.TriggerCreateNestedOneWithoutZapInput
   actions?: Prisma.ActionCreateNestedManyWithoutZapInput
 }
 
 export type ZapUncheckedCreateWithoutZapRunsInput = {
   id?: string
-  userId?: number
+  userId: number
   triggerId?: string | null
   trigger?: Prisma.TriggerUncheckedCreateNestedOneWithoutZapInput
   actions?: Prisma.ActionUncheckedCreateNestedManyWithoutZapInput

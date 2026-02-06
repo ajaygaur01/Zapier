@@ -17,9 +17,15 @@ function useAvailableActionsAndTriggers() {
     useEffect(() => {
         axios.get(`${BACKEND_URL}/api/v1/trigger/available`)
             .then(x => setAvailableTriggers(x.data.availableTriggers))
+            .catch(err => {
+                console.error("Error fetching triggers:", err);
+            })
 
         axios.get(`${BACKEND_URL}/api/v1/action/available`)
             .then(x => setAvailableActions(x.data.availableActions))
+            .catch(err => {
+                console.error("Error fetching actions:", err);
+            })
     }, [])
 
     return {
@@ -52,20 +58,25 @@ export default function() {
                     return;
                 }
 
-                const response = await axios.post(`${BACKEND_URL}/api/v1/zap`, {
-                    "availableTriggerId": selectedTrigger.id,
-                    "triggerMetadata": {},
-                    "actions": selectedActions.map(a => ({
-                        availableActionId: a.availableActionId,
-                        actionMetadata: a.metadata
-                    }))
-                }, {
-                    headers: {
-                        Authorization: localStorage.getItem("token")
-                    }
-                })
-                
-                router.push("/dashboard");
+                try {
+                    const response = await axios.post(`${BACKEND_URL}/api/v1/zap`, {
+                        "availableTriggerId": selectedTrigger.id,
+                        "triggerMetadata": {},
+                        "actions": selectedActions.map(a => ({
+                            availableActionId: a.availableActionId,
+                            actionMetadata: a.metadata
+                        }))
+                    }, {
+                        headers: {
+                            Authorization: localStorage.getItem("token")
+                        }
+                    })
+                    
+                    router.push("/dashboard");
+                } catch (err: any) {
+                    console.error("Error creating zap:", err);
+                    alert(err.response?.data?.message || "Failed to create zap. Please try again.");
+                }
 
             }}>Publish</PrimaryButton>
         </div>

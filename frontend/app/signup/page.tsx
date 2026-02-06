@@ -44,12 +44,17 @@ export default function() {
 
                     <div className="pt-4">
                         <PrimaryButton onClick={async () => {
-                            const res = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, {
-                                username: email,
-                                password,
-                                name
-                            });
-                            router.push("/login");
+                            try {
+                                const res = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, {
+                                    username: email,
+                                    password,
+                                    name
+                                });
+                                router.push("/login");
+                            } catch (err: any) {
+                                console.error("Signup error:", err);
+                                alert(err.response?.data?.message || "Signup failed. Please try again.");
+                            }
                         }} size="big">Get started free</PrimaryButton>
                     </div>
                 </div>

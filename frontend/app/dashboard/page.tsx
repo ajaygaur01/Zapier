@@ -48,6 +48,11 @@ function useZaps() {
                 setZaps(res.data.zaps);
                 setLoading(false)
             })
+            .catch(err => {
+                console.error("Error fetching zaps:", err);
+                setLoading(false);
+                // Optionally show error message to user
+            })
     }, []);
 
     return {

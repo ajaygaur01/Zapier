@@ -27,16 +27,19 @@ export type AggregateAvailableActions = {
 export type AvailableActionsMinAggregateOutputType = {
   id: string | null
   name: string | null
+  image: string | null
 }
 
 export type AvailableActionsMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  image: string | null
 }
 
 export type AvailableActionsCountAggregateOutputType = {
   id: number
   name: number
+  image: number
   _all: number
 }
 
@@ -44,16 +47,19 @@ export type AvailableActionsCountAggregateOutputType = {
 export type AvailableActionsMinAggregateInputType = {
   id?: true
   name?: true
+  image?: true
 }
 
 export type AvailableActionsMaxAggregateInputType = {
   id?: true
   name?: true
+  image?: true
 }
 
 export type AvailableActionsCountAggregateInputType = {
   id?: true
   name?: true
+  image?: true
   _all?: true
 }
 
@@ -132,6 +138,7 @@ export type AvailableActionsGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type AvailableActionsGroupByOutputType = {
   id: string
   name: string
+  image: string
   _count: AvailableActionsCountAggregateOutputType | null
   _min: AvailableActionsMinAggregateOutputType | null
   _max: AvailableActionsMaxAggregateOutputType | null
@@ -158,12 +165,14 @@ export type AvailableActionsWhereInput = {
   NOT?: Prisma.AvailableActionsWhereInput | Prisma.AvailableActionsWhereInput[]
   id?: Prisma.StringFilter<"AvailableActions"> | string
   name?: Prisma.StringFilter<"AvailableActions"> | string
+  image?: Prisma.StringFilter<"AvailableActions"> | string
   actions?: Prisma.ActionListRelationFilter
 }
 
 export type AvailableActionsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   actions?: Prisma.ActionOrderByRelationAggregateInput
 }
 
@@ -173,12 +182,14 @@ export type AvailableActionsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AvailableActionsWhereInput[]
   NOT?: Prisma.AvailableActionsWhereInput | Prisma.AvailableActionsWhereInput[]
   name?: Prisma.StringFilter<"AvailableActions"> | string
+  image?: Prisma.StringFilter<"AvailableActions"> | string
   actions?: Prisma.ActionListRelationFilter
 }, "id">
 
 export type AvailableActionsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   _count?: Prisma.AvailableActionsCountOrderByAggregateInput
   _max?: Prisma.AvailableActionsMaxOrderByAggregateInput
   _min?: Prisma.AvailableActionsMinOrderByAggregateInput
@@ -190,45 +201,53 @@ export type AvailableActionsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.AvailableActionsScalarWhereWithAggregatesInput | Prisma.AvailableActionsScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"AvailableActions"> | string
   name?: Prisma.StringWithAggregatesFilter<"AvailableActions"> | string
+  image?: Prisma.StringWithAggregatesFilter<"AvailableActions"> | string
 }
 
 export type AvailableActionsCreateInput = {
   id?: string
   name: string
+  image: string
   actions?: Prisma.ActionCreateNestedManyWithoutTypeInput
 }
 
 export type AvailableActionsUncheckedCreateInput = {
   id?: string
   name: string
+  image: string
   actions?: Prisma.ActionUncheckedCreateNestedManyWithoutTypeInput
 }
 
 export type AvailableActionsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
   actions?: Prisma.ActionUpdateManyWithoutTypeNestedInput
 }
 
 export type AvailableActionsUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
   actions?: Prisma.ActionUncheckedUpdateManyWithoutTypeNestedInput
 }
 
 export type AvailableActionsCreateManyInput = {
   id?: string
   name: string
+  image: string
 }
 
 export type AvailableActionsUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AvailableActionsUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AvailableActionsScalarRelationFilter = {
@@ -239,16 +258,19 @@ export type AvailableActionsScalarRelationFilter = {
 export type AvailableActionsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type AvailableActionsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type AvailableActionsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  image?: Prisma.SortOrder
 }
 
 export type AvailableActionsCreateNestedOneWithoutActionsInput = {
@@ -268,11 +290,13 @@ export type AvailableActionsUpdateOneRequiredWithoutActionsNestedInput = {
 export type AvailableActionsCreateWithoutActionsInput = {
   id?: string
   name: string
+  image: string
 }
 
 export type AvailableActionsUncheckedCreateWithoutActionsInput = {
   id?: string
   name: string
+  image: string
 }
 
 export type AvailableActionsCreateOrConnectWithoutActionsInput = {
@@ -294,11 +318,13 @@ export type AvailableActionsUpdateToOneWithWhereWithoutActionsInput = {
 export type AvailableActionsUpdateWithoutActionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AvailableActionsUncheckedUpdateWithoutActionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -335,6 +361,7 @@ export type AvailableActionsCountOutputTypeCountActionsArgs<ExtArgs extends runt
 export type AvailableActionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  image?: boolean
   actions?: boolean | Prisma.AvailableActions$actionsArgs<ExtArgs>
   _count?: boolean | Prisma.AvailableActionsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["availableActions"]>
@@ -342,19 +369,22 @@ export type AvailableActionsSelect<ExtArgs extends runtime.Types.Extensions.Inte
 export type AvailableActionsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  image?: boolean
 }, ExtArgs["result"]["availableActions"]>
 
 export type AvailableActionsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  image?: boolean
 }, ExtArgs["result"]["availableActions"]>
 
 export type AvailableActionsSelectScalar = {
   id?: boolean
   name?: boolean
+  image?: boolean
 }
 
-export type AvailableActionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["availableActions"]>
+export type AvailableActionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "image", ExtArgs["result"]["availableActions"]>
 export type AvailableActionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   actions?: boolean | Prisma.AvailableActions$actionsArgs<ExtArgs>
   _count?: boolean | Prisma.AvailableActionsCountOutputTypeDefaultArgs<ExtArgs>
@@ -370,6 +400,7 @@ export type $AvailableActionsPayload<ExtArgs extends runtime.Types.Extensions.In
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    image: string
   }, ExtArgs["result"]["availableActions"]>
   composites: {}
 }
@@ -796,6 +827,7 @@ export interface Prisma__AvailableActionsClient<T, Null = never, ExtArgs extends
 export interface AvailableActionsFieldRefs {
   readonly id: Prisma.FieldRef<"AvailableActions", 'String'>
   readonly name: Prisma.FieldRef<"AvailableActions", 'String'>
+  readonly image: Prisma.FieldRef<"AvailableActions", 'String'>
 }
     
 

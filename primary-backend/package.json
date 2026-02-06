@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "tsc && npm run copy-prisma-engine",
+    "copy-prisma-engine": "node scripts/copy-prisma-engine.js",
     "start": "node dist/index.js"
   },
   "keywords": [],

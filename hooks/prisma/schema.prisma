@@ -3,10 +3,15 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "../src/generated/prisma-new"
 }
 
 datasource db {
@@ -25,8 +30,8 @@ model User {
 
 model Zap {
   id                     String   @id @default(uuid())
- userId      Int         @unique @default(autoincrement())     @map("user_id")
- user        User        @relation(fields: [userId], references: [id])
+ userId      Int                    @map("user_id")
+  user        User        @relation(fields: [userId], references: [id])
   triggerId   String?    
   trigger    Trigger? 
   actions Action[]
@@ -45,6 +50,7 @@ model Trigger {
 model AvailableTriggers {
   id           String         @id @default(uuid())
   name         String
+  image String
   triggers     Trigger[]
 }
 
@@ -61,6 +67,7 @@ model Action {
 model AvailableActions {
   id String @id @default(uuid())
   name String
+  image String
   actions Action[]
 }
 

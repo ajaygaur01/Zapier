@@ -26,7 +26,7 @@ router.post("/", authMiddleware, async (req, res) => {
     const zapId = await prismaClient.$transaction(async (tx: Prisma.TransactionClient) => {
         const zap = await tx.zap.create({
             data: {
-                // userId: parseInt(id), // userId field is commented out in schema
+                userId: parseInt(id),
                 triggerId: "",
                 actions: {
                     create: parsedData.data.actions.map((x: { availableActionId: string; actionMetadata: Record<string, unknown> }, index: number) => ({
@@ -119,7 +119,7 @@ router.get("/:zapId", authMiddleware, async (req, res) => {
     const zap = await prismaClient.zap.findFirst({
         where: {
             id: zapId,
-            userId: parseInt(id, 10) // userId field is commented out in schema
+            userId: parseInt(id, 10)
         },
         include: {
             actions: {
