@@ -97,7 +97,8 @@ export type ZapScalarFieldEnum = (typeof ZapScalarFieldEnum)[keyof typeof ZapSca
 export const TriggerScalarFieldEnum = {
   id: 'id',
   triggerId: 'triggerId',
-  ZapId: 'ZapId'
+  ZapId: 'ZapId',
+  Metadata: 'Metadata'
 } as const
 
 export type TriggerScalarFieldEnum = (typeof TriggerScalarFieldEnum)[keyof typeof TriggerScalarFieldEnum]
