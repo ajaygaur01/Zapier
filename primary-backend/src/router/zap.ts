@@ -31,8 +31,8 @@ router.post("/", authMiddleware, async (req, res) => {
                 actions: {
                     create: parsedData.data.actions.map((x: { availableActionId: string; actionMetadata: Record<string, unknown> }, index: number) => ({
                         actionId: x.availableActionId,
-                        sortingOrder: index
-                        // metadata: x.actionMetadata // metadata field doesn't exist in Action model
+                        sortingOrder: index,
+                         metadata: x.actionMetadata 
                     }))
                 }
             }

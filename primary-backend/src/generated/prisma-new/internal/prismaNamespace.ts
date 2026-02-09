@@ -1090,6 +1090,7 @@ export const ActionScalarFieldEnum = {
   id: 'id',
   zapId: 'zapId',
   actionId: 'actionId',
+  Metadata: 'Metadata',
   sortingOrder: 'sortingOrder'
 } as const
 
