@@ -13,7 +13,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "@types/bs58": "^4.0.4",
     "@types/nodemailer": "^7.0.9",
+    "bs58": "^6.0.0",
     "kafkajs": "^2.2.4",
     "nodemailer": "^8.0.1"
   },
