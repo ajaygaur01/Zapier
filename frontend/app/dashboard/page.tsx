@@ -39,11 +39,12 @@ function useZaps() {
     const [zaps, setZaps] = useState<Zap[]>([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/zap`, {
-            headers: {
-                "Authorization": localStorage.getItem("token")
-            }
-        })
+        const token = localStorage.getItem("token");
+        const headers: Record<string, string> = {};
+        if (token && token.trim()) {
+            headers["Authorization"] = `Bearer ${token}`;
+        }
+        axios.get(`${BACKEND_URL}/api/v1/zap`, { headers })
             .then(res => {
                 setZaps(res.data.zaps);
                 setLoading(false)

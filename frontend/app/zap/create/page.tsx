@@ -67,9 +67,13 @@ export default function() {
                             actionMetadata: a.metadata
                         }))
                     }, {
-                        headers: {
-                            Authorization: localStorage.getItem("token")
-                        }
+                        headers: (() => {
+                            const token = localStorage.getItem("token");
+                            if (token && token.trim()) {
+                                return { Authorization: `Bearer ${token}` };
+                            }
+                            return {};
+                        })()
                     })
                     
                     router.push("/dashboard");

@@ -44,7 +44,13 @@ export default function() {
                                     username: email,
                                     password,
                                 });
-                                localStorage.setItem("token", res.data.token);
+                                const token = res.data?.token;
+                                if (typeof token !== "string" || !token.trim()) {
+                                    console.error("Login response missing valid token:", res.data);
+                                    alert("Login failed: no token received. Please try again.");
+                                    return;
+                                }
+                                localStorage.setItem("token", token);
                                 router.push("/dashboard");
                             } catch (err: any) {
                                 console.error("Login error:", err);

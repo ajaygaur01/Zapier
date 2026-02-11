@@ -71,13 +71,18 @@ router.post("/signin", async (req, res) => {
     }
 
     // sign the jwt
-    const token = jwt.sign({
-        id: user.id
-    }, JWT_PASSWORD);
-
-    res.json({
-        token: token,
-    });
+    if (!JWT_PASSWORD || !JWT_PASSWORD.trim()) {
+        console.error("JWT_PASSWORD is not set");
+        return res.status(500).json({ message: "Server configuration error" });
+    }
+    const token = jwt.sign(
+        { id: user.id },
+        JWT_PASSWORD
+    );
+    if (!token || !token.trim()) {
+        return res.status(500).json({ message: "Failed to create session" });
+    }
+    res.json({ token });
 })
 
 router.get("/user", authMiddleware, async (req, res) => {

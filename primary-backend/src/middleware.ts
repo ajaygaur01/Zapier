@@ -11,8 +11,12 @@ export function authMiddleware (req: Request, res: Response, next: NextFunction)
         });
     }
 
-    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
-    
+    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7).trim() : authHeader.trim();
+    if (!token || token === "null" || token === "undefined") {
+        return res.status(403).json({
+            message: "You are not logged in"
+        });
+    }
     try {
         const payload = jwt.verify(token, JWT_PASSWORD) as { id: number | string };
         const id = payload?.id;
