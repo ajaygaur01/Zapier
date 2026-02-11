@@ -97,7 +97,7 @@ router.post("/signin", async (req, res) => {
     res.json({ token });
 })
 
-router.get("/user", authMiddleware, async (req, res) => {
+router.get("/", authMiddleware, async (req, res) => {
     const id = req.id;
     if (!id) {
         return res.status(403).json({

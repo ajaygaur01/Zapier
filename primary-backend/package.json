@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "prisma": {
-    "seed": "npx tsx prisma/seed.ts"
+    "seed": "npx tsx seed.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
