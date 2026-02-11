@@ -70,16 +70,28 @@ router.post("/signin", async (req, res) => {
         })
     }
 
-    // sign the jwt
+    // Ensure we have a valid user id for the JWT payload (avoids empty payload)
+    const userId = typeof user.id === "number" ? user.id : parseInt(String(user.id), 10);
+    if (!Number.isInteger(userId) || userId < 1) {
+        console.error("Invalid user.id from DB:", user.id);
+        return res.status(500).json({ message: "Server error creating session" });
+    }
+
     if (!JWT_PASSWORD || !JWT_PASSWORD.trim()) {
         console.error("JWT_PASSWORD is not set");
         return res.status(500).json({ message: "Server configuration error" });
     }
     const token = jwt.sign(
-        { id: user.id },
+        { id: userId },
         JWT_PASSWORD
     );
     if (!token || !token.trim()) {
+        return res.status(500).json({ message: "Failed to create session" });
+    }
+    // Ensure token payload actually contains id (sanity check)
+    const decoded = jwt.decode(token) as { id?: number } | null;
+    if (!decoded || typeof decoded.id !== "number" || decoded.id < 1) {
+        console.error("JWT payload missing id after sign:", decoded);
         return res.status(500).json({ message: "Failed to create session" });
     }
     res.json({ token });
