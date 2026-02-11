@@ -18,7 +18,7 @@ app.use("/api/v1/trigger", triggerRouter);
 
 app.use("/api/v1/action", actionRouter);
 
-const PORT = Number(process.env.PORT) || 3000;
+const PORT =  3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
