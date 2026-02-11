@@ -225,8 +225,8 @@ function SolanaSelector({setMetadata}: {
     const [address, setAddress] = useState("");    
 
     return <div>
-        <Input label={"To"} type={"text"} placeholder="To" onChange={(e) => setAddress(e.target.value)}></Input>
-        <Input label={"Amount"} type={"text"} placeholder="To" onChange={(e) => setAmount(e.target.value)}></Input>
+        <Input label={"To"} type={"text"} placeholder="Solana wallet address" onChange={(e) => setAddress(e.target.value)}></Input>
+        <Input label={"Amount"} type={"text"} placeholder="e.g. 0.1 (in SOL)" onChange={(e) => setAmount(e.target.value)}></Input>
         <div className="pt-4">
         <PrimaryButton onClick={() => {
             setMetadata({
