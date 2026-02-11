@@ -44,13 +44,16 @@ export default function() {
                                     username: email,
                                     password,
                                 });
-                                const token = res.data?.token;
-                                if (typeof token !== "string" || !token.trim()) {
+                                // Accept token from common response shapes
+                                const token = typeof res.data?.token === "string"
+                                    ? res.data.token
+                                    : (res.data && typeof res.data === "string" ? res.data : null);
+                                if (!token || !token.trim()) {
                                     console.error("Login response missing valid token:", res.data);
                                     alert("Login failed: no token received. Please try again.");
                                     return;
                                 }
-                                localStorage.setItem("token", token);
+                                localStorage.setItem("token", token.trim());
                                 router.push("/dashboard");
                             } catch (err: any) {
                                 console.error("Login error:", err);

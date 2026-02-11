@@ -32,7 +32,7 @@ router.post("/", authMiddleware, async (req, res) => {
     const zapId = await prismaClient.$transaction(async (tx: Prisma.TransactionClient) => {
         const zap = await tx.zap.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 triggerId: "",
                 actions: {
                     create: parsedData.data.actions.map((x: { availableActionId: string; actionMetadata: Record<string, unknown> }, index: number) => ({

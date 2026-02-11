@@ -25,9 +25,11 @@ export const Appbar = () => {
                     setUser(res.data.user);
                 }
             })
-            .catch(() => {
-                // Token invalid or expired – clear it
-                localStorage.removeItem("token");
+            .catch((err) => {
+                // Only clear token on 403 Unauthorized – don't clear on network errors or 500s
+                if (err.response?.status === 403) {
+                    localStorage.removeItem("token");
+                }
             })
             .finally(() => setAuthChecked(true));
     }, []);
