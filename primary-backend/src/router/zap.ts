@@ -8,12 +8,18 @@ const router = Router();
 
 router.post("/", authMiddleware, async (req, res) => {
     const id = req.id;
-    if (!id) {
+    if (id === undefined || id === null) {
         return res.status(403).json({
             message: "Unauthorized"
         });
     }
-    
+    const userId = typeof id === "number" ? id : parseInt(String(id), 10);
+    if (Number.isNaN(userId) || userId < 1) {
+        return res.status(403).json({
+            message: "Invalid user"
+        });
+    }
+
     const body = req.body;
     const parsedData = ZapCreateSchema.safeParse(body);
     
@@ -26,13 +32,13 @@ router.post("/", authMiddleware, async (req, res) => {
     const zapId = await prismaClient.$transaction(async (tx: Prisma.TransactionClient) => {
         const zap = await tx.zap.create({
             data: {
-                userId: parseInt(id),
+                userId,
                 triggerId: "",
                 actions: {
                     create: parsedData.data.actions.map((x: { availableActionId: string; actionMetadata: Record<string, unknown> }, index: number) => ({
                         actionId: x.availableActionId,
                         sortingOrder: index,
-                         metadata: x.actionMetadata 
+                        Metadata: x.actionMetadata
                     }))
                 }
             }
