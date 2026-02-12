@@ -1,28 +1,38 @@
-
-
-export const Feature = ({title, subtitle}: {
-    title: string,
-    subtitle: string
+export const Feature = ({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
 }) => {
-    return <div className="flex pl-8">
-        <Check />
-        <div className="flex flex-col justify-center pl-2">
-            <div className="flex">
-                <div className="font-bold text-sm">
-                    {title}
-                </div>
-
-                <div className="pl-1 text-sm">
-                    {subtitle}
-                </div>
-            </div>
-        </div>
+  return (
+    <div className="flex items-center gap-3">
+      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+        <CheckIcon />
+      </span>
+      <div>
+        <span className="text-body font-semibold text-neutral-900">{title}</span>
+        <span className="text-body text-neutral-500"> {subtitle}</span>
+      </div>
     </div>
-}
+  );
+};
 
-function Check () {
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">
-    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-  </svg>
-  
+function CheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className="h-5 w-5"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m4.5 12.75 6 6 9-13.5"
+      />
+    </svg>
+  );
 }
