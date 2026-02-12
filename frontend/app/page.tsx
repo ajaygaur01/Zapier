@@ -1,15 +1,34 @@
-import { Appbar } from "@/components/Appbar";
-import { Hero } from "@/components/Hero";
-import { HeroVideo } from "@/components/HeroVideo";
+import { MarketingLayout } from "@/components/layout/MarketingLayout";
+import {
+  HeroSection,
+  SocialProofSection,
+  ProblemSection,
+  HowItWorksSection,
+  FeatureSection,
+  BuilderPreviewSection,
+  IntegrationsSection,
+  TestimonialsSection,
+  PricingPreviewSection,
+  FinalCTASection,
+  LandingFooter,
+} from "@/components/landing";
 
 export default function Home() {
   return (
-    <main className="pb-48">
-        <Appbar />
-        <Hero />
-        <div className="pt-8">
-          <HeroVideo />
-        </div>
-    </main>
+    <MarketingLayout>
+      <main>
+        <HeroSection />
+        <SocialProofSection />
+        <ProblemSection />
+        <HowItWorksSection />
+        <FeatureSection />
+        <BuilderPreviewSection />
+        <IntegrationsSection />
+        <TestimonialsSection />
+        <PricingPreviewSection />
+        <FinalCTASection />
+        <LandingFooter />
+      </main>
+    </MarketingLayout>
   );
 }
