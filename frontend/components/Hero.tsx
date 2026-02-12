@@ -1,38 +1,40 @@
-"use client"
-import { useRouter } from "next/navigation"
-import { Feature } from "./Feature"
-import { PrimaryButton } from "./buttons/PrimaryButton"
-import { SecondaryButton } from "./buttons/SecondaryButton"
+"use client";
+
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/Button";
+import { Feature } from "./Feature";
 
 export const Hero = () => {
-    const router = useRouter();
-    return <div>
-        <div className="flex justify-center">
-            <div className="text-5xl font-bold font-semibold text-center pt-8 max-w-xl">
-                Automate as fast as you can type    
-            </div>
-        </div>
-        <div className="flex justify-center pt-2">
-            <div className="text-xl font-bold font-normal text-center pt-8 max-w-2xl">
-                AI gives you automation superpowers, and Zapier puts them to work. Pairing AI and Zapier helps you turn ideas into workflows and bots that work for you.
-            </div>
-        </div>
+  const router = useRouter();
 
-        <div className="flex justify-center pt-4">
-            <div className="flex">
-                <PrimaryButton onClick={() => {
-                    router.push("/signup")
-                }} size="big">Get Started free</PrimaryButton>
-                <div className="pl-4">
-                    <SecondaryButton  onClick={() => {}} size="big">Contact Sales</SecondaryButton>
-                </div>
-            </div>
+  return (
+    <section className="container-content pt-16 pb-12 md:pt-24 md:pb-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <h1 className="text-display-lg text-neutral-900 md:text-4xl">
+          Automate as fast as you can type
+        </h1>
+        <p className="mt-6 text-body text-neutral-600 leading-relaxed">
+          AI gives you automation superpowers. Pairing AI and Automate helps you
+          turn ideas into workflows that work for you.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => router.push("/signup")}
+          >
+            Get started free
+          </Button>
+          <Button variant="secondary" size="lg" onClick={() => {}}>
+            Contact sales
+          </Button>
         </div>
-
-        <div className="flex justify-center pt-4">
-            <Feature title={"Free Forever"} subtitle={"for core features"} />
-            <Feature title={"More apps"} subtitle={"than any other platforms"} />
-            <Feature title={"Cutting Edge"} subtitle={"AI Features"} />
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+          <Feature title="Free forever" subtitle="for core features" />
+          <Feature title="More apps" subtitle="than any other platform" />
+          <Feature title="Cutting edge" subtitle="AI features" />
         </div>
-    </div>
-}
+      </div>
+    </section>
+  );
+};
