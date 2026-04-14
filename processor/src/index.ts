@@ -54,6 +54,7 @@ function getEmailPayload(row: unknown): { to: string; body: string } | null {
   return { to: m.email, body: m.body };
 }
 
+
 async function main() {
   const producer = kafka.producer();
   await producer.connect();
